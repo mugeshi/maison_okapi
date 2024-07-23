@@ -57,6 +57,12 @@
   border-radius: 5px;
 }
 
+.icon-container .fa-thin {
+  font-weight: 100px;
+  
+}   
+
+
 @media (max-width: 768px) {
   .navbar-links {
     flex-direction: column;
