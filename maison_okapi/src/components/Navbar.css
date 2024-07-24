@@ -1,14 +1,10 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+AT:ital,wght@0,100..400;1,100..400&display=swap');
-
 
 .playwrite-at-logo {
   font-family: "Playwrite AT", cursive;
-  font-weight: 600; 
+  font-weight: 600;
   font-style: normal;
 }
-
-
 
 .navbar {
   display: flex;
@@ -39,7 +35,6 @@
   margin-right: auto;
   margin: 0;
   padding: 0;
- 
 }
 
 .navbar-links li {
@@ -57,11 +52,10 @@
   border-radius: 5px;
 }
 
-.icon-container .fa-thin {
-  font-weight: 100px;
-  
-}   
-
+.icon-container .custom-icon {
+  font-weight: 100; 
+  color: #000; 
+}
 
 @media (max-width: 768px) {
   .navbar-links {

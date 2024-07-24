@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons'; // Correct icon import
+import { faUser } from '@fortawesome/free-solid-svg-icons'; 
 
 const Navbar = () => {
   return (
@@ -16,7 +16,7 @@ const Navbar = () => {
         <li><a href="/newcollection">New Collection</a></li>
       </ul>
       <div className="icon-container">
-        <FontAwesomeIcon icon={faUser} className="fa-thin" /> 
+        <FontAwesomeIcon icon={faUser} className="custom-icon" /> {/* Use a custom class */}
       </div>
     </nav>
   );
