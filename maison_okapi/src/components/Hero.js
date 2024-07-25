@@ -13,7 +13,8 @@ const Hero = () => {
       </section>
       <section className="banner-section">
         <div className="banner">
-          <h1>Kenya’s golden coastline informs Pre-Fall 2024, evoking a spirit of endless summer through handcraft, repurposing, and artistic embellishments.</h1>
+          <h1>PRE-FALL 2024 COLLECTION</h1>
+          <h2>Kenya’s golden coastline informs Pre-Fall 2024, evoking a spirit of endless summer through handcraft, repurposing, and artistic embellishments.</h2>
           <button className="discover-btn">Discover</button>
         </div>
       </section>
