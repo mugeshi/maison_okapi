@@ -16,12 +16,12 @@
 }
 
 .hero-title {
-  font-size: 4rem;
+  font-size: 3rem;
   margin-bottom: 1rem;
 }
 
 .hero-subtitle {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-bottom: 2rem;
 }
 
@@ -38,6 +38,39 @@
 .hero-button:hover {
   background-color: #444;
 }
+
+
+
+
+.banner {
+  background-color: #ffffff; 
+  padding: 2rem; 
+  text-align: center;
+  border-top: 2px solid #f0e3e3; 
+}
+
+.banner h1 {
+  font-size: 15px; 
+  margin-bottom: 1rem; 
+  color: #333; 
+  line-height: 1.5; 
+}
+
+.discover-btn {
+  background-color: #e2d7d6; 
+  color: #070606; 
+  padding: 0.75rem 1.5rem; 
+  border: none; 
+  border-radius: 5px; 
+  font-size: 1rem; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease;
+}
+
+.discover-btn:hover {
+  background-color: #bbaaaa; 
+}
+
 
 @media (max-width: 768px) {
   .hero-title {

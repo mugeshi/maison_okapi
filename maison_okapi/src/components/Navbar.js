@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons'; 
+import { faUser, faCartShopping } from '@fortawesome/free-solid-svg-icons'; 
 
 const Navbar = () => {
   return (
@@ -16,8 +16,10 @@ const Navbar = () => {
         <li><a href="/newcollection">New Collection</a></li>
       </ul>
       <div className="icon-container">
-        <FontAwesomeIcon icon={faUser} className="custom-icon" /> {/* Use a custom class */}
+        <FontAwesomeIcon icon={faUser} className="custom-icon" />
+        <FontAwesomeIcon icon={faCartShopping} className="custom-icon" /> {/* Use FontAwesomeIcon for the cart */}
       </div>
+     
     </nav>
   );
 };
