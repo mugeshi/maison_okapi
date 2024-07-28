@@ -10,8 +10,8 @@
 }
 
 .featured1-image {
-  width: 500px; 
-  height: 800px; 
+  width: 550px; 
+  height: 700px; 
   object-fit: cover; /* Cover the container while maintaining aspect ratio */
   border-radius: 10px; 
 }
@@ -19,7 +19,7 @@
 
 .featured2-image {
   width: 500px; 
-  height: 800px; 
+  height: 700px; 
   object-fit: cover; 
   border-radius: 10px; 
 }
