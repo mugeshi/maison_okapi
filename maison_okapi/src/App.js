@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Home from './components/Home';
 import Slideshow from './components/Slideshow';
+import Imageslide from './components/Imageslide';
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Hero />
       <Home />
       <Slideshow />
+      <Imageslide />
     </>
   );
 }
