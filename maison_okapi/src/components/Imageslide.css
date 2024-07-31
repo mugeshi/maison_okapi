@@ -1,0 +1,39 @@
+/* Add the sliding animation */
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* Hide overflowing content */
+}
+
+.image-row {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%; 
+  animation: slide 20s linear infinite; /* Apply the sliding animation */
+}
+
+.image-item {
+  flex: 0 0 auto;
+  width: 30%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+h1 {
+  margin-top: 50px;
+  text-align: center; 
+  margin-bottom: 20px; 
+  font-size: 21px;
+  font-family: cursive;
+  font-weight: 100;
+}
