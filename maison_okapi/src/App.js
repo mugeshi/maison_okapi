@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Home from './components/Home';
 import Slideshow from './components/Slideshow';
 import Imageslide from './components/Imageslide';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Home />
       <Slideshow />
       <Imageslide />
+      <Footer />
     </>
   );
 }
