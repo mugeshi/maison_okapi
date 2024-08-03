@@ -11,14 +11,20 @@
 .image-container {
   position: relative;
   width: 100%;
-  overflow: hidden; /* Hide overflowing content */
+  overflow: hidden; /* Hiding overflowing content */
 }
 
 .image-row {
   display: flex;
   flex-wrap: nowrap;
-  width: 200%; 
-  animation: slide 20s linear infinite; /* Apply the sliding animation */
+  width: 200%;
+  animation: slide 20s linear infinite; /* Applying the sliding animation */
+  transition: animation-play-state 0.3s ease; /* Smooth transition for pausing */
+}
+
+/* Pause sliding animation when hovering over an image */
+.image-container:hover .image-row {
+  animation-play-state: paused;
 }
 
 .image-item {
@@ -27,6 +33,12 @@
   height: auto;
   display: block;
   object-fit: cover;
+  transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+}
+
+/* Zoom out effect on hover */
+.image-item:hover {
+  transform: scale(1.1); /* Zooming out slightly */
 }
 
 h1 {
@@ -37,3 +49,4 @@ h1 {
   font-family: cursive;
   font-weight: 100;
 }
+
