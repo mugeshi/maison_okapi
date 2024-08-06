@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import './Imageslide.css';
 import WhiteImage1 from './images/WhiteImage1.jpeg';
 import WhiteImage2 from './images/WhiteImage2.jpeg';
@@ -27,17 +27,61 @@ const images = [
 ];
 
 const Imageslide = () => {
-  // Duplicate the images array to create a seamless scroll
   const doubledImages = [...images, ...images];
+  const [isPaused, setIsPaused] = useState(false);
+  const imageRowRef = useRef(null);
+
+  const handlePauseClick = () => {
+    setIsPaused(!isPaused);
+  };
+
+  const handleArrowClick = (direction) => {
+    if (imageRowRef.current) {
+      const scrollAmount = imageRowRef.current.clientWidth / 2; // Scroll by half the width of the container
+      if (direction === 'left') {
+        imageRowRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else if (direction === 'right') {
+        imageRowRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+  };
+
+  const handleMouseEnter = () => {
+    setIsPaused(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsPaused(false);
+  };
 
   return (
     <div className="image-container">
       <h1>MEN'S PRE-FALL 2024 COLLECTION</h1>
-      <div className="image-row">
+      <button className="arrow arrow-left" onClick={() => handleArrowClick('left')}>
+        <i className="fas fa-chevron-left"></i>
+      </button>
+      <div
+        className="image-row"
+        ref={imageRowRef}
+        style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
+      >
         {doubledImages.map((image, index) => (
-          <img key={index} src={image} alt={`Clothing ${index + 1}`} className="image-item" />
+          <img
+            key={index}
+            src={image}
+            alt={`Clothing ${index + 1}`}
+            className="image-item"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          />
         ))}
       </div>
+      <button className="arrow arrow-right" onClick={() => handleArrowClick('right')}>
+        <i className="fas fa-chevron-right"></i>
+      </button>
+      <button className="pause-button" onClick={handlePauseClick}>
+        <i className={`fas ${isPaused ? 'fa-play' : 'fa-pause'}`}></i>
+      </button>
     </div>
   );
 };

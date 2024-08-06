@@ -11,15 +11,16 @@
 .image-container {
   position: relative;
   width: 100%;
-  overflow: hidden; /* Hiding overflowing content */
+  overflow-y: hidden;
+  overflow-x: hidden; /* Add this to hide overflow on the x-axis as well */
 }
 
 .image-row {
   display: flex;
   flex-wrap: nowrap;
   width: 200%;
-  animation: slide 20s linear infinite; /* Applying the sliding animation */
-  transition: animation-play-state 0.3s ease; /* Smooth transition for pausing */
+  animation: slide 15s linear infinite; /* Applying the sliding animation */
+  transition: animation-play-state 0.2s ease; /* Smooth transition for pausing */
 }
 
 /* Pause sliding animation when hovering over an image */
@@ -50,3 +51,33 @@ h1 {
   font-weight: 100;
 }
 
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow-left {
+  left: 10px;
+}
+
+.arrow-right {
+  right: 10px;
+}
+
+.pause-button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
