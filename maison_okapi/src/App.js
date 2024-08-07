@@ -6,20 +6,27 @@ import Home from './components/Home';
 import Slideshow from './components/Slideshow';
 import Imageslide from './components/Imageslide';
 import Footer from './components/Footer';
-import Profile from './components/Profile'; // Correct import path
+import Profile from './components/Profile'; 
 
 const App = () => {
   return (
     <Router>
       <Navbar />
-      <Hero />
-      <Home />
-      <Slideshow />
-      <Imageslide />
-      <Footer />
       <Routes>
+        <Route 
+          path="/" 
+          element={
+            <>
+              <Hero />
+              <Home />
+              <Slideshow />
+              <Imageslide />
+              <Footer />
+            </>
+          } 
+        />
         <Route path="/profile" element={<Profile />} />
-        
+        {/* Add other routes here */}
       </Routes>
     </Router>
   );
