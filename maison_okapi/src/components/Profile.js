@@ -1,120 +1,90 @@
-import React, { useState } from "react";
-import "./ProfilePage.css";
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+import './Profile.css';
+import axios from 'axios';
 
 const Profile = () => {
-  const [editing, setEditing] = useState(false);
-  const [profile, setProfile] = useState({
-    username: "JohnDoe",
-    email: "john.doe@example.com",
-    name: "John Doe",
-    phone: "123-456-7890",
-    picture: "path_to_profile_picture.jpg", // Initial profile picture
-  });
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState({});
+  const [isLogin, setIsLogin] = useState(false); // Track if it's a login or sign-up
 
-  const handleEdit = () => {
-    setEditing(!editing);
+  const validate = () => {
+    const newErrors = {};
+    if (!username) newErrors.username = 'Username is required';
+    if (!email) newErrors.email = 'Email is required';
+    if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = 'Email is invalid';
+    if (!password) newErrors.password = 'Password is required';
+    if (password.length < 6) newErrors.password = 'Password must be at least 6 characters long';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
-  const handleChange = (e) => {
-    setProfile({
-      ...profile,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validate()) return;
 
-  const handleSave = () => {
-    // Save changes logic here
-    setEditing(false);
-  };
-
-  const handlePictureChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProfile((prevProfile) => ({
-          ...prevProfile,
-          picture: reader.result, // Set the base64 image data as the profile picture
-        }));
-      };
-      reader.readAsDataURL(file);
+    const url = isLogin ? 'http://localhost:5000/api/login' : 'http://localhost:5000/api/signup';
+    try {
+      const response = await axios.post(url, { username, email, password });
+      console.log(response.data);
+      // Handle successful authentication (e.g., redirect, show a success message)
+    } catch (error) {
+      console.error('Error during authentication', error);
+      // Handle authentication error
     }
   };
 
   return (
-    <div className="profile-page">
-      <h1>Profile</h1>
-      <div className="profile-info">
-        <div className="profile-picture">
-          <img src={profile.picture} alt="Profile" />
-          <button onClick={() => document.getElementById("fileInput").click()}>
-            Change Picture
-          </button>
+    <div className="container">
+      <div className="header">
+        <div className="text">{isLogin ? 'Login' : 'Sign Up'}</div>
+      </div>
+      <form className="inputs" onSubmit={handleSubmit}>
+        <div className="input-group">
+          <label htmlFor="username">
+            <FontAwesomeIcon icon={faUser} /> Username:
+          </label>
           <input
-            id="fileInput"
-            type="file"
-            style={{ display: "none" }}
-            onChange={handlePictureChange}
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
+          {errors.username && <div className="error">{errors.username}</div>}
         </div>
-        <div className="profile-details">
-          <h2>{profile.username}</h2>
-          <p>Email: {profile.email}</p>
-          <p>Name: {profile.name}</p>
-          <p>Phone: {profile.phone}</p>
-          {editing ? (
-            <div className="edit-form">
-              <input
-                type="text"
-                name="username"
-                value={profile.username}
-                onChange={handleChange}
-              />
-              <input
-                type="email"
-                name="email"
-                value={profile.email}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name="name"
-                value={profile.name}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name="phone"
-                value={profile.phone}
-                onChange={handleChange}
-              />
-              <button onClick={handleSave}>Save Changes</button>
-            </div>
-          ) : (
-            <button onClick={handleEdit}>Edit Profile</button>
-          )}
+        <div className="input-group">
+          <label htmlFor="email">
+            <FontAwesomeIcon icon={faEnvelope} /> Email:
+          </label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {errors.email && <div className="error">{errors.email}</div>}
         </div>
-      </div>
-      <div className="order-history">
-        <h2>Order History</h2>
-        {/* Map through orders and display them */}
-      </div>
-      <div className="wishlist">
-        <h2>Wishlist</h2>
-        {/* Map through wishlist items and display them */}
-      </div>
-      <div className="addresses">
-        <h2>Addresses</h2>
-        {/* Map through addresses and display them */}
-      </div>
-      <div className="recent-activity">
-        <h2>Recent Activity</h2>
-        {/* Display recent activity */}
-      </div>
-      <div className="support">
-        <h2>Support</h2>
-        <button>Contact Support</button>
-      </div>
+        <div className="input-group">
+          <label htmlFor="password">
+            <FontAwesomeIcon icon={faLock} /> Password:
+          </label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {errors.password && <div className="error">{errors.password}</div>}
+        </div>
+        <button type="submit">{isLogin ? 'Login' : 'Sign Up'}</button>
+        <button type="button" onClick={() => setIsLogin(!isLogin)}>
+          {isLogin ? 'Switch to Sign Up' : 'Switch to Login'}
+        </button>
+        <a href="/forgot-password" className="forgot-password-link">Forgot Password?</a>
+      </form>
     </div>
   );
 };

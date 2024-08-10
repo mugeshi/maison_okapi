@@ -11,7 +11,7 @@ const Navbar = () => {
         <h2 className="playwrite-at-logo">maison okapi</h2>
       </div>
       <ul className="navbar-links">
-        <li><Link to="/">Home</Link></li>
+        <li><Link to="/home">Home</Link></li>
         <li><Link to="/accessories">Accessories</Link></li>
         <li><Link to="/footwear">Footwear</Link></li>
         <li><Link to="/newcollection">New Collection</Link></li>
@@ -29,4 +29,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

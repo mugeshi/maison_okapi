@@ -1,5 +1,5 @@
 import React from 'react';
-import './Home.css';
+import './ImageFeatured.css';
 
 import femaleImage from './images/female.jpeg';
 import maleImage from './images/male9.jpeg';

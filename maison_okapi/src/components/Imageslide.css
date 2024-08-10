@@ -53,31 +53,102 @@ h1 {
 
 .arrow {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.8);
+  width: 50px; /* Adjust size as needed */
+  height: 50px;
+  background: linear-gradient(135deg, #ff5f6d, #ffc371); /* Gradient background */
   border: none;
-  padding: 10px;
+  border-radius: 50%; /* Circular shape */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
   cursor: pointer;
   z-index: 10;
+  transition: background 0.3s ease, transform 0.3s ease; /* Smooth transition */
 }
 
-.arrow-left {
-  left: 10px;
+.arrow:hover {
+  background: linear-gradient(135deg, #ff6f61, #ffcc71); /* Slightly darker gradient on hover */
+  transform: scale(1.1); /* Slight zoom effect on hover */
 }
 
-.arrow-right {
-  right: 10px;
+/* Arrow direction icons */
+.arrow-left::before {
+  content: '◀'; /* Left arrow symbol */
+  font-size: 24px;
+  color: #fff; /* White color */
 }
 
+.arrow-right::before {
+  content: '▶'; /* Right arrow symbol */
+  font-size: 24px;
+  color: #fff; /* White color */
+}
+
+/* Unique styling for arrows */
+.arrow {
+  position: absolute;
+  width: 50px; /* Adjust size as needed */
+  height: 50px;
+  background: linear-gradient(135deg, #ff5f6d, #ffc371); /* Gradient background */
+  border: none;
+  border-radius: 50%; /* Circular shape */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.arrow:hover {
+  background: linear-gradient(135deg, #ff6f61, #ffcc71); /* Slightly darker gradient on hover */
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Arrow direction icons */
+.arrow-left::before {
+  content: '◀'; /* Left arrow symbol */
+  font-size: 24px;
+  color: #fff; /* White color */
+}
+
+.arrow-right::before {
+  content: '▶'; /* Right arrow symbol */
+  font-size: 24px;
+  color: #fff; /* White color */
+}
+
+/* Unique styling for pause button */
 .pause-button {
   position: absolute;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(255, 255, 255, 0.8);
+  width: 60px; /* Adjust size as needed */
+  height: 60px;
+  background: linear-gradient(135deg, #28a745, #218838); /* Gradient background */
   border: none;
-  padding: 10px;
+  border-radius: 50%; /* Circular shape */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
   cursor: pointer;
   z-index: 10;
+  transition: background 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.pause-button:hover {
+  background: linear-gradient(135deg, #34bfa3, #1e8e6e); /* Slightly different gradient on hover */
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Pause icon */
+.pause-button::before {
+  content: '||'; /* Pause symbol */
+  font-size: 24px;
+  color: #fff; /* White color */
+  font-weight: bold;
 }
