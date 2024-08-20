@@ -8,12 +8,29 @@
   }
 }
 
-.image-container {
-  position: relative;
-  width: 100%;
-  overflow-y: hidden;
-  overflow-x: hidden; /* Add this to hide overflow on the x-axis as well */
+.image-container a {
+  text-decoration: none; /* Ensure no underline on the link */
 }
+
+.featured1-image,
+.featured2-image {
+  border: none; /* Ensure no border on the images */
+  display: block; /* Prevent extra space from inline images */
+}
+
+.image-container {
+  border: none; /* Ensure no border on the container */
+}
+
+.featured-text {
+  margin-top: 1rem;
+  font-size: 1.25rem; 
+  color: #333; 
+  text-transform: uppercase;
+  text-decoration: none !important; /* Force no underline */
+  border: none !important; /* Force no border */
+}
+
 
 .image-row {
   display: flex;
@@ -151,4 +168,12 @@ h1 {
   font-size: 24px;
   color: #fff; /* White color */
   font-weight: bold;
+}
+.featured-text {
+  margin-top: 1rem;
+  font-size: 1.25rem; 
+  color: #333; 
+  text-transform: uppercase;
+  text-decoration: none; 
+  border: none; 
 }

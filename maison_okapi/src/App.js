@@ -7,6 +7,8 @@ import Slideshow from "./components/Slideshow";
 import Imageslide from "./components/Imageslide";
 import Footer from "./components/Footer";
 import Profile from "./components/Profile";
+import JacketsPage from "./components/JacketsPage";
+
 
 const LandingPage = () => (
   <>
@@ -29,6 +31,10 @@ const App = () => {
 
         {/* Route for the Profile page */}
         <Route path="/profile" element={<Profile />} />
+
+         {/* Route for the Jackets page */}
+         <Route path="/jackets" element={<JacketsPage />} />
+
       </Routes>
      
     </Router>

@@ -2,12 +2,12 @@
 
 .playwrite-at-logo {
   font-family: "Times New Roman", Times, serif;
-  font-weight: 400; /* You can change this to 100, 200, 300, etc., to adjust weight */
-  font-style: normal; /* You can change this to italic if you prefer */
-  font-size: 1.7rem; /* Adjust this value to increase/decrease the font size */
-  color: #000; /* You can change this to any color you like */
-  letter-spacing: 0.05rem; /* Adjust the spacing between letters */
-  text-transform: uppercase; /* Makes the text all uppercase */
+  font-weight: 500; 
+  font-style: normal; 
+  font-size: 1.7rem; 
+  color: #000; 
+  letter-spacing: 0.05rem; 
+  text-transform: uppercase; 
 }
 
 .navbar {
@@ -29,7 +29,7 @@
   flex-grow: 1;
   text-align: center;
   position: absolute;
-  left: 50%; /* Adjusted to make sure it centers properly */
+  left: 50%;
   transform: translateX(-50%);
 }
 
