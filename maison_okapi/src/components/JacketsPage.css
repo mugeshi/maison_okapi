@@ -1,0 +1,19 @@
+.jackets-page {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .jackets-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; 
+  }
+  
+  .jacket-image {
+    width: 200px; 
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px; 
+  }
+  
