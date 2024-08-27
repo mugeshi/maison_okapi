@@ -1,4 +1,3 @@
-
 import React from 'react';
 import './JacketsPage.css'; 
 
@@ -15,8 +14,16 @@ import jacket10 from './images/jacket10.jpeg';
 
 const JacketsPage = () => {
   const jackets = [
-    jacket1, jacket2, jacket3, jacket4, jacket5,
-    jacket6, jacket7, jacket8, jacket9, jacket10
+    { image: jacket1, price: '$59.99' },
+    { image: jacket2, price: '$69.99' },
+    { image: jacket3, price: '$79.99' },
+    { image: jacket4, price: '$89.99' },
+    { image: jacket5, price: '$99.99' },
+    { image: jacket6, price: '$109.99' },
+    { image: jacket7, price: '$119.99' },
+    { image: jacket8, price: '$129.99' },
+    { image: jacket9, price: '$139.99' },
+    { image: jacket10, price: '$149.99' }
   ];
 
   return (
@@ -24,7 +31,10 @@ const JacketsPage = () => {
       <h1>Jackets Collection</h1>
       <div className="jackets-gallery">
         {jackets.map((jacket, index) => (
-          <img src={jacket} alt={`Jacket ${index + 1}`} key={index} className="jacket-image" />
+          <div key={index} className="jacket-item">
+            <img src={jacket.image} alt={`Jacket ${index + 1}`} className="jacket-image" />
+            <div className="jacket-price">{jacket.price}</div>
+          </div>
         ))}
       </div>
     </div>

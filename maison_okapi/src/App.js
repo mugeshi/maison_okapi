@@ -9,15 +9,12 @@ import Footer from "./components/Footer";
 import Profile from "./components/Profile";
 import JacketsPage from "./components/JacketsPage";
 
-
 const LandingPage = () => (
   <>
-  <Navbar />
     <Hero />
     <ImageFeatured />
     <Slideshow />
     <Imageslide />
-    <Footer />
   </>
 );
 
@@ -26,17 +23,11 @@ const App = () => {
     <Router>
       <Navbar />
       <Routes>
-        {/* Route for the landing page */}
         <Route path="/home" element={<LandingPage />} />
-
-        {/* Route for the Profile page */}
         <Route path="/profile" element={<Profile />} />
-
-         {/* Route for the Jackets page */}
-         <Route path="/jackets" element={<JacketsPage />} />
-
+        <Route path="/jackets" element={<JacketsPage />} />
       </Routes>
-     
+      <Footer /> 
     </Router>
   );
 };
