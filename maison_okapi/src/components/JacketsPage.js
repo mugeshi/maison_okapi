@@ -28,16 +28,19 @@ const JacketsPage = () => {
 
   return (
     <div className="jackets-page">
-      <h1>Jackets Collection</h1>
-      <div className="jackets-gallery">
-        {jackets.map((jacket, index) => (
-          <div key={index} className="jacket-item">
-            <img src={jacket.image} alt={`Jacket ${index + 1}`} className="jacket-image" />
-            <div className="jacket-price">{jacket.price}</div>
-          </div>
-        ))}
+  <h1>Jackets Collection</h1>
+  <div className="jackets-gallery">
+    {jackets.map((jacket, index) => (
+      <div key={index} className="jacket-card">
+        <img src={jacket.image} alt={jacket.title} className="jacket-image" />
+        <div className="jacket-info">
+          <h2>{jacket.title}</h2>
+          <p className="jacket-price">{jacket.price}</p>
+        </div>
       </div>
-    </div>
+    ))}
+  </div>
+</div>
   );
 };
 
