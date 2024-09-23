@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import Profile from "./components/Profile";
 import JacketsPage from "./components/JacketsPage";
 import ShirtJacketsPage from "./components/ShirtJacketsPage"; 
+import DiscoveryPage from "./components/DiscoveryPage";
 
 const LandingPage = () => (
   <>
@@ -27,7 +28,8 @@ const App = () => {
         <Route path="/home" element={<LandingPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/jackets" element={<JacketsPage />} />
-        <Route path="/shirt-jackets" element={<ShirtJacketsPage />} /> {/* Add the route for ShirtJacketsPage */}
+        <Route path="/shirt-jackets" element={<ShirtJacketsPage />} />
+        <Route path="/discovery" element={<DiscoveryPage />} />
       </Routes>
       <Footer /> 
     </Router>
