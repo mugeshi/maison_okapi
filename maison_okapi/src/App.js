@@ -10,6 +10,7 @@ import Profile from "./components/Profile";
 import JacketsPage from "./components/JacketsPage";
 import ShirtJacketsPage from "./components/ShirtJacketsPage"; 
 import DiscoveryPage from "./components/DiscoveryPage";
+import Accessories from './components/Accessories';
 
 const LandingPage = () => (
   <>
@@ -25,11 +26,12 @@ const App = () => {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/home" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/jackets" element={<JacketsPage />} />
         <Route path="/shirt-jackets" element={<ShirtJacketsPage />} />
         <Route path="/discovery" element={<DiscoveryPage />} />
+        <Route path="/accessories" element={<Accessories />} />
       </Routes>
       <Footer /> 
     </Router>

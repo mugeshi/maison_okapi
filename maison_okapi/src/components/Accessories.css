@@ -1,0 +1,53 @@
+.accessories-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #eae2e2;
+    color: #333;
+    text-align: center;
+  }
+  
+  .accessories-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 700px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .accessories-card:hover {
+    transform: translateY(-20px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .accessories-card img {
+    width: 100px; 
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 5px;
+  }
+  
+  .accessories-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .coming-soon-message {
+    font-size: 1.2rem;
+    color: #777;
+  }
+  
+ 
+  .accessories-page {
+    padding-bottom: 20px;
+  }
+  
