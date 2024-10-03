@@ -1,5 +1,5 @@
 import React from 'react';
-import { jackets, shirtJackets } from './images'; // Adjust the path based on your structure
+import { jackets, shirtJackets } from './images'; 
 import './DiscoveryPage.css';
 
 const DiscoveryPage = () => {

@@ -11,6 +11,7 @@ import JacketsPage from "./components/JacketsPage";
 import ShirtJacketsPage from "./components/ShirtJacketsPage"; 
 import DiscoveryPage from "./components/DiscoveryPage";
 import Accessories from './components/Accessories';
+import NewCollection from "./components/NewCollection";
 
 const LandingPage = () => (
   <>
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/shirt-jackets" element={<ShirtJacketsPage />} />
         <Route path="/discovery" element={<DiscoveryPage />} />
         <Route path="/accessories" element={<Accessories />} />
+        <Route path="/newcollection" element={<NewCollection/>} />
       </Routes>
       <Footer /> 
     </Router>
