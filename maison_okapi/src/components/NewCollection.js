@@ -5,9 +5,7 @@ import './NewCollection.css';
 const NewCollection = () => {
   return (
     <div className="new-collection">
-      <h1>New Collection</h1>
-      <p>Discover the latest additions to our collection.</p>
-
+      
       <h2>Jackets</h2>
       <div className="collection-grid">
         {jackets.map((jacket, index) => (
