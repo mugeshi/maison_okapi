@@ -1,13 +1,10 @@
-
 .new-collection {
-  padding: 40px;
+ 
   text-align: center;
   background: white; 
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  
 }
-
 
 .new-collection h2 {
   font-size: 3rem;
@@ -29,33 +26,24 @@
   border-radius: 5px; /* Rounded corners */
 }
 
-
-
-
-
 /* Collection Grid */
 .collection-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 30px;
-  margin: 20px 0;
+  gap: 2px; /* Reduced gap for closer images */
+  margin: 20px 0px;
 }
 
 /* Card Styles */
 .collection-card {
   position: relative;
-  
-  border-radius: 10px;
-  padding: 15px;
-  background-color: #ffffff;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
+  background-color: transparent; /* Made background transparent */
+  border: none; /* Removed border */
 }
 
+/* Card Hover Effect */
 .collection-card:hover {
-  transform: scale(1.30); /* Scale effect on hover */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: none; /* Remove shadow on hover */
 }
 
 /* Image Styles */
@@ -64,15 +52,13 @@
   height: 400px;
   object-fit: cover;
   border-radius: 10px;
-  transition: transform 0.3s ease;
+  margin: 0 0 20px 0; /* Remove margin to pull images closely together */
 }
-
-
 
 /* Price Styles */
 .collection-card p {
   margin: 10px 0;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
   color: #4a4d4a; /* Dark green for price */
 }

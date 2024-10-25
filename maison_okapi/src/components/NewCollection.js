@@ -16,6 +16,8 @@ const NewCollection = () => {
         ))}
       </div>
 
+      <div className="spacer"></div> {/* Spacer here */}
+
       <h2>Shirt Jackets</h2>
       <div className="collection-grid">
         {shirtJackets.map((shirtJacket, index) => (

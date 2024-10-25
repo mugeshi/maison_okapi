@@ -1,28 +1,37 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from model import db, User  
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'  # Database URI
+CORS(app)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db' 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  
 db.init_app(app)  
 
-# Create the database and the user table
-with app.app_context():
-    db.create_all()
 
-# Route for user sign-in
+@app.route('/', methods=['GET'])
+def welcome():
+    return jsonify({'message': 'Welcome to the Maison Okapi website!'}), 200
+
+
 @app.route('/api/signin', methods=['POST'])
-def sign_in():
-    data = request.json  # Get JSON data from the request
+def signin():
+    data = request.get_json()  # Get JSON data from the request
+
     username = data.get('username')
+    email = data.get('email')
     password = data.get('password')
 
+    user = User.query.filter_by(username=username, email=email).first()
     
-    user = User.query.filter_by(username=username).first()
-    if user and user.check_password(password):
-        return jsonify({"message": "Sign in successful!", "user_id": user.id}), 200
+    if user and user.password == password:  
+        return jsonify({'message': 'Sign in successful!', 'user': {'username': user.username}}), 200
     else:
-        return jsonify({"error": "Invalid username or password"}), 401
+        return jsonify({'error': 'Invalid credentials'}), 401
+
 
 if __name__ == '__main__':
-    app.run(debug=True)  # Run the Flask app in debug mode
+    with app.app_context():
+        db.create_all()  
+    app.run(debug=True)
