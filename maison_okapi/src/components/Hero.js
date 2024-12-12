@@ -19,8 +19,8 @@ const Hero = () => {
 
       <section className="banner-section">
         <div className="banner">
-          <h1>PRE-FALL 2024 COLLECTION</h1>
-          <h2>Kenya’s golden coastline informs Pre-Fall 2024, evoking a spirit of endless summer through handcraft, repurposing, and artistic embellishments.</h2>
+          <h1>LIMITED EDITION</h1>
+          <h2>Each piece tells a unique story of artistry, precision, and boldness, meticulously crafted to inspire confidence and celebrate individuality</h2>
           <Link to="/discovery" className="discover-btn">Discover</Link>
         </div>
       </section>

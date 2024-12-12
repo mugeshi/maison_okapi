@@ -56,7 +56,7 @@ const Imageslide = () => {
 
   return (
     <div className="image-container">
-      <h1>MEN'S PRE-FALL 2024 COLLECTION</h1>
+      <h1>EXPLORE OUR LATEST DESIGNS</h1>
       <button className="arrow arrow-left" onClick={() => handleArrowClick('left')}>
         <i className="fas fa-chevron-left"></i>
       </button>

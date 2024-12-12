@@ -67,21 +67,24 @@
 
 .banner {
   background-color: #ffffff; 
-  padding: 2rem; 
+  padding: 1rem; 
   text-align: center;
   border-top: 2px solid #f0e3e3; 
 }
 
 .banner h1 {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 550;
+  padding-top: 10px;
+  margin-bottom: 13px; /* Remove the default margin-bottom */
 }
 
 .banner h2 {
-  font-size: 15px; 
+  font-size: 17px;
   font-weight: 400;
-  margin-bottom: 1rem; 
-  color: #333; 
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin-top: 20px ; /* Remove any default margin */
+  color: #333;
   line-height: 1.5;
 }
 
@@ -92,10 +95,13 @@
   border: none; 
   border-radius: 5px; 
   font-size: 1rem; 
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   cursor: pointer; 
   transition: background-color 0.3s ease;
   width: 200px; 
   text-align: center; 
+  text-decoration: none;
+  
 }
 
 .discover-btn:hover {

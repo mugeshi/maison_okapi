@@ -1,8 +1,8 @@
 import React from 'react';
-import './Accessories.css';
+import './AboutUs.css';
 import okapiImage from './images/okapi.jpeg';
 
-const Accessories = () => {
+const AboutUs = () => {
     return (
         <div className="accessories-page">
             <div className="accessories-card">
@@ -14,4 +14,4 @@ const Accessories = () => {
     );
 };
 
-export default Accessories;
+export default AboutUs;

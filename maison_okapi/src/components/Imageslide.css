@@ -7,6 +7,9 @@
   }
 }
 
+.image-container{
+  overflow: hidden;
+}
 .image-container a {
   text-decoration: none;
 }
@@ -15,6 +18,7 @@
 .featured2-image {
   border: none;
   display: block;
+  
 }
 
 .image-container {

@@ -10,7 +10,7 @@ import Profile from "./components/Profile";
 import JacketsPage from "./components/JacketsPage";
 import ShirtJacketsPage from "./components/ShirtJacketsPage"; 
 import DiscoveryPage from "./components/DiscoveryPage";
-import Accessories from './components/Accessories';
+import AboutUs from './components/AboutUs';
 import NewCollection from "./components/NewCollection";
 
 const LandingPage = () => (
@@ -27,12 +27,13 @@ const App = () => {
     <Router>
       <Navbar />
       <Routes>
+     
         <Route path="/" element={<LandingPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/jackets" element={<JacketsPage />} />
         <Route path="/shirt-jackets" element={<ShirtJacketsPage />} />
         <Route path="/discovery" element={<DiscoveryPage />} />
-        <Route path="/accessories" element={<Accessories />} />
+        <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/newcollection" element={<NewCollection/>} />
       </Routes>
       <Footer /> 

@@ -9,15 +9,15 @@ const ImagesSection = () => {
   return (
     <section className="images-section">
       <div className="image-container">
-        <Link to="/jackets"> {/* Link to the jackets page */}
+        <Link to="/jackets"> 
           <img src={maleImage} alt="Female Featured" className="featured1-image" />
-          <h2 className="featured-text">JACKETS FEATURED</h2>
+          <h2 className="featured-text">OUTERWEAR</h2>
         </Link>
       </div>
       <div className="image-container">
-        <Link to="/shirt-jackets"> {/* Link to the shirt-jackets page */}
+        <Link to="/shirt-jackets"> 
           <img src={femaleImage} alt="Male Featured" className="featured2-image" />
-          <h2 className="featured-text">SHIRT-JACKETS FEATURED</h2>
+          <h2 className="featured-text">ACTIVEWEAR</h2>
         </Link>
       </div>
     </section>

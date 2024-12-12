@@ -1,19 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faCartShopping } from '@fortawesome/free-solid-svg-icons'; 
+import { faUser, faCartShopping, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev); // Toggle state
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false); // Close the menu when a link is clicked
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <h2 className="playwrite-at-logo">maison okapi</h2>
+        <Link to="/" onClick={closeMenu}>
+          <h2 className="playwrite-at-logo">maison okapi</h2>
+        </Link>
       </div>
-      <ul className="navbar-links">
-        
-        <li><Link to="/accessories">Accessories</Link></li>
-        <li><Link to="/newcollection">New Collection</Link></li>
+      <button className="menu-toggle" onClick={toggleMenu}>
+        <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
+      </button>
+      <ul className={`navbar-links ${isMenuOpen ? 'active' : ''}`}>
+        <li>
+          <Link to="/activewear" onClick={closeMenu}>Activewear</Link>
+        </li>
+        <li>
+          <Link to="/newcollection" onClick={closeMenu}>New Collection</Link>
+        </li>
+        <li>
+          <Link to="/aboutUs" onClick={closeMenu}>About us</Link>
+        </li>
       </ul>
       <div className="icon-container">
         <Link to="/profile">
