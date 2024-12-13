@@ -76,12 +76,7 @@ const Imageslide = () => {
           />
         ))}
       </div>
-      <button className="arrow arrow-right" onClick={() => handleArrowClick('right')}>
-        <i className="fas fa-chevron-right"></i>
-      </button>
-      <button className="pause-button" onClick={handlePauseClick}>
-        <i className={`fas ${isPaused ? 'fa-play' : 'fa-pause'}`}></i>
-      </button>
+     
     </div>
   );
 };

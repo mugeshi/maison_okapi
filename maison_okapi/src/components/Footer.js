@@ -1,24 +1,37 @@
 import React from 'react';
 import './Footer.css';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <div className="footer-section about">
-          <h2 className="footer-title">Maison Okapi</h2>
-          <p>
-            Maison Okapi is your ultimate destination for trendy and stylish clothing. We offer a wide range of collections to cater to your fashion needs.
-          </p>
+        <div className="footer-section links">
+          <h2 className="footer-title">Quick Links</h2>
+          <ul className="footer-links">
+            <li><Link to="/about">About Us</Link></li>
+            <li><Link to="/shipping-returns">Shipping & Returns</Link></li>
+            <li><Link to="/size-guide">Size Guide</Link></li>
+            <li><Link to="/carelabel">Care Label</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+          </ul>
         </div>
+      </div>
 
-
-        <div className="footer-section contact">
-          <h2 className="footer-title">Contact Us</h2>
-          <p><i className="fa fa-phone"></i> +123-456-7890</p>
-          <p><i className="fa fa-envelope"></i> info@maisonokapi.com</p>
-          <p><i className="fa fa-map-marker"></i> 123 Fashion Street, Nairobi, Kenya</p>
-        </div>
+      {/* Social Media Icons Section */}
+      <div className="footer-socials">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-instagram"></i>
+        </a>
+        <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-pinterest"></i>
+        </a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-tiktok"></i>
+        </a>
       </div>
 
       <div className="footer-bottom">
