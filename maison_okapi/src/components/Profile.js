@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Profile.css'; // Importing the CSS file for styling the component
+import './Profile.css'; 
 
 const Profile = () => {
     // Setting up state to manage form data (username, email, and password)
@@ -113,4 +113,4 @@ const Profile = () => {
     );
 };
 
-export default Profile; // Exporting the Profile component for use in other parts of the application
+export default Profile; 

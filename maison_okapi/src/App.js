@@ -12,6 +12,7 @@ import ShirtJacketsPage from "./components/ShirtJacketsPage";
 import DiscoveryPage from "./components/DiscoveryPage";
 import AboutUs from './components/AboutUs';
 import NewCollection from "./components/NewCollection";
+import SizeGuide from "./components/SizeGuide";
 
 const LandingPage = () => (
   <>
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/shirt-jackets" element={<ShirtJacketsPage />} />
         <Route path="/discovery" element={<DiscoveryPage />} />
         <Route path="/aboutUs" element={<AboutUs />} />
+        <Route path="/sizeguide"element={<SizeGuide/>} />
         <Route path="/newcollection" element={<NewCollection/>} />
       </Routes>
       <Footer /> 

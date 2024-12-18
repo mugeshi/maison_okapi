@@ -23,12 +23,34 @@ def signin():
     email = data.get('email')
     password = data.get('password')
 
+    # Query for the user by username and email
     user = User.query.filter_by(username=username, email=email).first()
     
-    if user and user.password == password:  
+    # Check if user exists and password matches
+    if user and user.check_password(password):  
         return jsonify({'message': 'Sign in successful!', 'user': {'username': user.username}}), 200
     else:
         return jsonify({'error': 'Invalid credentials'}), 401
+
+
+@app.route('/api/signup', methods=['POST'])
+def signup():
+    data = request.get_json()
+    
+    username = data.get('username')
+    email = data.get('email')
+    password = data.get('password')
+
+    if User.query.filter((User.username == username) | (User.email == email)).first():
+        return jsonify({'error': 'User with this username or email already exists'}), 400
+
+    new_user = User(username=username, email=email)
+    new_user.set_password(password)  # Hash the password
+    db.session.add(new_user)
+    db.session.commit()
+
+    return jsonify({'message': 'User registered successfully!', 'user': {'username': username}}), 201
+
 
 
 if __name__ == '__main__':

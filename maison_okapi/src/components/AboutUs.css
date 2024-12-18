@@ -1,53 +1,106 @@
-.accessories-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* General Page Styles */
+.about-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Playfair Display', serif;
+  color: #2c2c2c;
+}
+
+/* Header Section */
+.about-header {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(to bottom, #f8f3e8, #fff);
+  border-bottom: 2px solid #f8c471;
+}
+
+.about-header h1 {
+  font-size: 3rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.about-header p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* About Us Section */
+.about-section {
+  margin: 2rem 0;
+  padding: 2rem;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.about-us {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.about-content {
+  max-width: 600px;
+}
+
+.about-content h2 {
+  font-size: 2rem;
+  color: #2c2c2c;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #f8c471;
+}
+
+.about-content p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+/* Other Sections */
+.brand-story, .mission, .vision {
+  text-align: left;
+}
+
+.brand-story h2, .mission h2, .vision h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #2c2c2c;
+  border-bottom: 2px solid #f8c471;
+  display: inline-block;
+}
+
+.brand-story p, .mission p, .vision p {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+blockquote {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #f8c471;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-us {
     flex-direction: column;
-    height: 100vh;
-    background-color: #eae2e2;
-    color: #333;
     text-align: center;
   }
-  
-  .accessories-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    max-width: 700px;
-    text-align: center;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  .about-image img {
+    max-width: 100%;
   }
-  
-  .accessories-card:hover {
-    transform: translateY(-20px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  .accessories-card img {
-    width: 100px; 
-    height: auto;
-    margin-bottom: 15px;
-    border-radius: 5px;
-  }
-  
-  .accessories-title {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .coming-soon-message {
-    font-size: 1.2rem;
-    color: #777;
-  }
-  
- 
-  .accessories-page {
-    padding-bottom: 20px;
-  }
-  
+}

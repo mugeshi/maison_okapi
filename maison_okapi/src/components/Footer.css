@@ -66,3 +66,38 @@
 .footer-socials a:hover {
   color: #f8c471; 
 }
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-wrap: wrap; 
+    gap: 1rem; 
+    justify-content: center; 
+  }
+
+  .footer-section {
+    flex: 1 1 100%; 
+    text-align: center; 
+  }
+
+  .footer-links {
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 1rem; 
+  }
+
+  .footer-socials {
+    margin: 1rem 0; 
+    gap: 1rem; 
+    justify-content: center;
+  }
+
+  .footer-socials a {
+    font-size: 1.4rem; 
+  }
+
+  .footer-bottom {
+    margin-top: 1rem; 
+    font-size: 0.8rem; 
+  }
+}
