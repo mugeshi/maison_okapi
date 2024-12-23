@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Profile.css';
 
 const Profile = () => {
@@ -91,10 +92,13 @@ const Profile = () => {
                 <button type="button" className="profile-button">Cancel</button>
 
                 <div className="profile-signup-prompt">
-                    <p>If you don't have an account, <a href="/create-account" className="profile-create-account-link">create one here</a>.</p>
+                    <p>
+                        If you don't have an account, 
+                        <Link to="/create-account" className="profile-create-account-link"> create one here</Link>.
+                    </p>
                 </div>
 
-                <a href="/forgot-password" className="profile-forgot-password-link">Forgot Password?</a>
+                <Link to="/forgot-password" className="profile-forgot-password-link">Forgot Password?</Link>
             </form>
         </div>
     );

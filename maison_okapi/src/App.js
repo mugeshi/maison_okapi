@@ -13,6 +13,7 @@ import DiscoveryPage from "./components/DiscoveryPage";
 import AboutUs from './components/AboutUs';
 import NewCollection from "./components/NewCollection";
 import SizeGuide from "./components/SizeGuide";
+import CreateAccount from './components/CreateAccount';
 
 const LandingPage = () => (
   <>
@@ -37,6 +38,7 @@ const App = () => {
         <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/sizeguide"element={<SizeGuide/>} />
         <Route path="/newcollection" element={<NewCollection/>} />
+        <Route path="/create-account" element={<CreateAccount />} />
       </Routes>
       <Footer /> 
     </Router>
