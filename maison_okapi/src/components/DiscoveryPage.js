@@ -1,8 +1,14 @@
-import React from 'react';
-import { jackets, shirtJackets } from './images'; 
+import React, { useEffect, useState } from 'react';
+import { jackets, shirtJackets } from './images';
 import './DiscoveryPage.css';
 
 const DiscoveryPage = () => {
+  // const [data, setData] = useState([]);
+
+  // useEffect(() => {
+  //   // fetch some data
+  // }, [])
+
   return (
     <div className="discovery-page">
       <h1>Jackets Collection</h1>
