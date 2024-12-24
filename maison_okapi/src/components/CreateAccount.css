@@ -19,7 +19,7 @@
 .create-account-form {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Add space between form fields */
+    gap: 20px; 
 }
 
 .create-account-field {
