@@ -3,6 +3,9 @@ from flask_cors import CORS
 from flask_mail import Mail, Message  
 from model import db, User  
 import random
+from dotenv import load_dotenv
+import os
+
 
 app = Flask(__name__)
 CORS(app)
@@ -12,12 +15,13 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  
 db.init_app(app)
 
-# Email configuration (for Gmail, you can adjust for other services)
+# Email configuration 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'your-email@gmail.com'  
-app.config['MAIL_PASSWORD'] = 'your-email-password'  
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')  # Fetch from environment variable
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')  
+
 
 # Initialize Flask-Mail
 mail = Mail(app)
