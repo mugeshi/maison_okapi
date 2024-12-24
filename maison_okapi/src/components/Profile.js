@@ -10,6 +10,7 @@ const Profile = () => {
     });
 
     const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -33,11 +34,13 @@ const Profile = () => {
             return response.json();
         })
         .then(data => {
-            console.log('Success:', data);
+            setSuccessMessage('You have successfully signed in!');
+            setError(''); // Clear any previous errors
         })
         .catch((error) => {
             console.error('Error:', error);
             setError('Failed to sign in.');
+            setSuccessMessage(''); // Clear any previous success messages
         });
     };
 
@@ -87,6 +90,7 @@ const Profile = () => {
                 </div>
 
                 {error && <div className="profile-error">{error}</div>}
+                {successMessage && <div className="profile-success">{successMessage}</div>}
 
                 <button type="submit" className="profile-button">Sign In</button>
                 <button type="button" className="profile-button">Cancel</button>

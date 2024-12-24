@@ -36,6 +36,8 @@ def signin():
 @app.route('/api/signup', methods=['POST'])
 def signup():
     data = request.get_json()
+    if not data:
+        return jsonify({'error': 'Invalid JSON payload'}), 400
     
     username = data.get('username')
     email = data.get('email')
@@ -45,12 +47,15 @@ def signup():
         return jsonify({'error': 'User with this username or email already exists'}), 400
 
     new_user = User(username=username, email=email)
-    new_user.set_password(password)  # Hash the password
-    db.session.add(new_user)
-    db.session.commit()
+    new_user.set_password(password)
 
-    return jsonify({'message': 'User registered successfully!', 'user': {'username': username}}), 201
-
+    try:
+        db.session.add(new_user)
+        db.session.commit()
+        return jsonify({'message': 'User registered successfully!', 'user': {'username': username}}), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': 'Failed to create user: ' + str(e)}), 500
 
 
 if __name__ == '__main__':
