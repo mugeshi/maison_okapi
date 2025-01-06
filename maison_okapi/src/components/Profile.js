@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Profile.css';
 
 const Profile = () => {
@@ -11,6 +11,9 @@ const Profile = () => {
 
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    
+    // Initialize the useNavigate hook
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -36,6 +39,9 @@ const Profile = () => {
         .then(data => {
             setSuccessMessage('You have successfully signed in!');
             setError(''); // Clear any previous errors
+
+            // Redirect to dashboard after successful sign-in
+            navigate('/dashboard');
         })
         .catch((error) => {
             console.error('Error:', error);

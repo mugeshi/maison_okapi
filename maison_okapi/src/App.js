@@ -14,6 +14,8 @@ import AboutUs from './components/AboutUs';
 import NewCollection from "./components/NewCollection";
 import SizeGuide from "./components/SizeGuide";
 import CreateAccount from './components/CreateAccount';
+import Dashboard from "./components/Dashboard";
+import OrderHistory from "./components/OrderHistory";
 
 const LandingPage = () => (
   <>
@@ -39,6 +41,8 @@ const App = () => {
         <Route path="/sizeguide"element={<SizeGuide/>} />
         <Route path="/newcollection" element={<NewCollection/>} />
         <Route path="/create-account" element={<CreateAccount />} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/order-history" component={OrderHistory} />
       </Routes>
       <Footer /> 
     </Router>

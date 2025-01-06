@@ -1,30 +1,22 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from flask_mail import Mail, Message  
-from model import db, User  
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+from model import db, User
 import random
 from dotenv import load_dotenv
 import os
 
+# Load environment variables
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
-# Configure the app to use Flask-Mail
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db' 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  
+# Configure the app to use SQLAlchemy
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
-
-# Email configuration 
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')  # Fetch from environment variable
-app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')  
-
-
-# Initialize Flask-Mail
-mail = Mail(app)
 
 @app.route('/', methods=['GET'])
 def welcome():
@@ -32,7 +24,7 @@ def welcome():
 
 @app.route('/api/signin', methods=['POST'])
 def signin():
-    data = request.get_json()  
+    data = request.get_json()
 
     username = data.get('username')
     email = data.get('email')
@@ -40,9 +32,9 @@ def signin():
 
     # Query for the user by username and email
     user = User.query.filter_by(username=username, email=email).first()
-    
+
     # Check if user exists and password matches
-    if user and user.check_password(password):  
+    if user and user.check_password(password):
         return jsonify({'message': 'Sign in successful!', 'user': {'username': user.username}}), 200
     else:
         return jsonify({'error': 'Invalid credentials'}), 401
@@ -75,11 +67,23 @@ def signup():
         return jsonify({'error': 'Failed to create user: ' + str(e)}), 500
 
 def send_verification_email(email, verification_code):
-    msg = Message('Account Verification Code', recipients=[email])
-    msg.body = f'Your verification code is: {verification_code}'
-    mail.send(msg)
+    """Send verification email using SendGrid."""
+    message = Mail(
+        from_email=os.getenv('SENDGRID_FROM_EMAIL'),  # Sender's email address
+        to_emails=email,  # Recipient's email address
+        subject='Account Verification Code',
+        plain_text_content=f'Your verification code is: {verification_code}'
+    )
+    try:
+        sg = SendGridAPIClient(os.getenv('SENDGRID_API_KEY'))  # Load API key from environment
+        response = sg.send(message)
+        print(f'Email sent: {response.status_code}')
+        return True
+    except Exception as e:
+        print(f'Error sending email: {str(e)}')
+        return False
 
 if __name__ == '__main__':
     with app.app_context():
-        db.create_all() 
+        db.create_all()
     app.run(debug=True)
