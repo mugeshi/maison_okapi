@@ -52,22 +52,27 @@ def signin():
 def signup():
     data = request.get_json()
     username = data.get('username')
+    email = data.get('email')
     password = data.get('password')
 
-    # Check if the username already exists
+    if not username or not email or not password:
+        return jsonify({'error': 'Username, email, and password are required!'}), 400
+
     if User.query.filter_by(username=username).first():
         return jsonify({'error': 'User with this username already exists'}), 400
 
-    new_user = User(username=username)
+    new_user = User(username=username, email=email)
     new_user.set_password(password)
 
     try:
         db.session.add(new_user)
         db.session.commit()
-        return jsonify({'message': 'User registered successfully!', 'user': {'username': username}}), 201
+        return jsonify({'message': 'User registered successfully!', 'user': {'username': username, 'email': email}}), 201
     except Exception as e:
         db.session.rollback()
         return jsonify({'error': 'Failed to create user: ' + str(e)}), 500
+
+
 
 if __name__ == '__main__':
     with app.app_context():
