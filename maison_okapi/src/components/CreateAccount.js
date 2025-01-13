@@ -43,15 +43,21 @@ const CreateAccount = () => {
                 return response.json(); // Parse the response JSON
             })
             .then((data) => {
-                console.log('Account created:', data); // Log the server response
-                setSuccess('Account created successfully!'); 
-                setError(''); // Clear any error message
-                setFormData({ username: '', email: '', password: '' }); // Clear form inputs
-                alert('Account created successfully!'); // Show an alert to the user
-
-                // Redirect to the sign-in page
-                navigate('/signin');
+                console.log('Account created:', data);
+                setSuccess('Account created successfully!');
+                setError('');
+                setFormData({ username: '', email: '', password: '' });
+                
+                // Store credentials for pre-filling on sign-in page
+                localStorage.setItem('newUser', JSON.stringify({
+                    username: formData.username,
+                    email: formData.email,
+                }));
+            
+                // Redirect to sign-in page
+                navigate('/profile');
             })
+              
             .catch((error) => {
                 // Handle any errors during the request
                 console.error('Error:', error);

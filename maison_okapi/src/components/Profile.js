@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Profile.css';
 
@@ -8,12 +8,23 @@ const Profile = () => {
         email: '',
         password: '',
     });
-
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
-    
-    // Initialize the useNavigate hook
     const navigate = useNavigate();
+
+    useEffect(() => {
+        // Check if newUser data exists in localStorage
+        const newUser = JSON.parse(localStorage.getItem('newUser'));
+        if (newUser) {
+            setFormData((prevState) => ({
+                ...prevState,
+                username: newUser.username,
+                email: newUser.email,
+            }));
+            // Clear the localStorage after pre-filling
+            localStorage.removeItem('newUser');
+        }
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -38,15 +49,13 @@ const Profile = () => {
         })
         .then(data => {
             setSuccessMessage('You have successfully signed in!');
-            setError(''); // Clear any previous errors
-
-            // Redirect to dashboard after successful sign-in
-            navigate('/dashboard');
+            setError('');
+            navigate('/dashboard'); 
         })
         .catch((error) => {
             console.error('Error:', error);
             setError('Failed to sign in.');
-            setSuccessMessage(''); // Clear any previous success messages
+            setSuccessMessage('');
         });
     };
 
