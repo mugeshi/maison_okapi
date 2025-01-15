@@ -32,15 +32,15 @@ const Profile = () => {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+    e.preventDefault();
 
-        fetch('/api/signin', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        })
+    fetch('/api/signin', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+    })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -48,16 +48,19 @@ const Profile = () => {
             return response.json();
         })
         .then(data => {
+            // Save user token or relevant data in localStorage
+            localStorage.setItem('authToken', data.token); // Example
             setSuccessMessage('You have successfully signed in!');
             setError('');
-            navigate('/dashboard'); 
+            navigate('/dashboard'); // Navigate to the dashboard
         })
         .catch((error) => {
             console.error('Error:', error);
             setError('Failed to sign in.');
             setSuccessMessage('');
         });
-    };
+};
+
 
     return (
         <div className="profile-container">

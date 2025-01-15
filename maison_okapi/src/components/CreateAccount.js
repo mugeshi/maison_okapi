@@ -20,50 +20,50 @@ const CreateAccount = () => {
     // Handle changes in form input fields and update state
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value }); // Update the specific field in formData
+        setFormData({ ...formData, [name]: value });
     };
 
     // Handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission behavior
 
-        // Make a POST request to the server to create a new user
-        fetch('/api/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json', // Set content type to JSON
-            },
-            body: JSON.stringify(formData), // Convert formData to JSON for the request body
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    // Throw an error if the response status is not OK
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json(); // Parse the response JSON
-            })
-            .then((data) => {
-                console.log('Account created:', data);
-                setSuccess('Account created successfully!');
-                setError('');
-                setFormData({ username: '', email: '', password: '' });
-                
-                // Store credentials for pre-filling on sign-in page
-                localStorage.setItem('newUser', JSON.stringify({
-                    username: formData.username,
-                    email: formData.email,
-                }));
-            
-                // Redirect to sign-in page
-                navigate('/profile');
-            })
-              
-            .catch((error) => {
-                // Handle any errors during the request
-                console.error('Error:', error);
-                setError(error.message || 'Failed to create account'); // Set error message
-                setSuccess(''); // Clear success message
+        try {
+            const response = await fetch('/api/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
             });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Failed to create account');
+            }
+
+            const data = await response.json();
+            console.log('Account created:', data);
+
+            // Display success message and clear error
+            setSuccess('Account created successfully!');
+            setError('');
+
+            // Store user details in localStorage for pre-filling the sign-in form
+            localStorage.setItem(
+                'newUser',
+                JSON.stringify({ username: formData.username, email: formData.email })
+            );
+
+            // Clear the form
+            setFormData({ username: '', email: '', password: '' });
+
+            // Redirect to the profile (sign-in) page
+            navigate('/profile');
+        } catch (err) {
+            console.error('Error:', err);
+            setError(err.message); // Display error message
+            setSuccess(''); // Clear success message
+        }
     };
 
     // Render the form
@@ -77,9 +77,10 @@ const CreateAccount = () => {
             <form className="create-account-form" onSubmit={handleSubmit}>
                 {/* Username input field */}
                 <div className="create-account-field">
-                    <label className="create-account-label" htmlFor="username">Username</label>
+                    <label htmlFor="username" className="create-account-label">Username</label>
                     <input
                         type="text"
+                        id="username"
                         name="username"
                         value={formData.username}
                         onChange={handleChange}
@@ -89,9 +90,10 @@ const CreateAccount = () => {
                 </div>
                 {/* Email input field */}
                 <div className="create-account-field">
-                    <label className="create-account-label" htmlFor="email">Email</label>
+                    <label htmlFor="email" className="create-account-label">Email</label>
                     <input
                         type="email"
+                        id="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
@@ -101,9 +103,10 @@ const CreateAccount = () => {
                 </div>
                 {/* Password input field */}
                 <div className="create-account-field">
-                    <label className="create-account-label" htmlFor="password">Password</label>
+                    <label htmlFor="password" className="create-account-label">Password</label>
                     <input
                         type="password"
+                        id="password"
                         name="password"
                         value={formData.password}
                         onChange={handleChange}
