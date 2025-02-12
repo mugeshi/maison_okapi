@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from model import db, User
+from model import db, User, Order  # Import Order model (assumed to exist)
 import jwt
 import datetime
 from dotenv import load_dotenv
@@ -26,21 +26,14 @@ def welcome():
 @app.route('/api/signin', methods=['POST'])
 def signin():
     data = request.get_json()
-
     username = data.get('username')
     password = data.get('password')
 
-    # Query for the user by username
     user = User.query.filter_by(username=username).first()
 
-    # Check if user exists and password matches
     if user and user.check_password(password):
-        # Generate a JWT token
         token = jwt.encode(
-            {
-                'user_id': user.id,
-                'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
-            },
+            {'user_id': user.id, 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)},
             SECRET_KEY,
             algorithm='HS256'
         )
@@ -72,7 +65,34 @@ def signup():
         db.session.rollback()
         return jsonify({'error': 'Failed to create user: ' + str(e)}), 500
 
+# 🔹 New Route: Fetch Order History
+@app.route('/api/order-history', methods=['GET'])
+def order_history():
+    auth_header = request.headers.get('Authorization')
 
+    if not auth_header or not auth_header.startswith('Bearer '):
+        return jsonify({'error': 'Missing or invalid token'}), 401
+
+    token = auth_header.split(' ')[1]
+
+    try:
+        decoded_token = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
+        user_id = decoded_token['user_id']
+
+        # Query orders from the database (assuming an Order model exists)
+        orders = Order.query.filter_by(user_id=user_id).all()
+
+        # Convert orders to JSON
+        orders_list = [
+            {'order_id': order.id, 'item': order.item, 'price': order.price, 'status': order.status}
+            for order in orders
+        ]
+
+        return jsonify({'orders': orders_list}), 200
+    except jwt.ExpiredSignatureError:
+        return jsonify({'error': 'Token expired'}), 401
+    except jwt.InvalidTokenError:
+        return jsonify({'error': 'Invalid token'}), 401
 
 if __name__ == '__main__':
     with app.app_context():
