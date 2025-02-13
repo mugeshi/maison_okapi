@@ -49,10 +49,10 @@ const Profile = () => {
         })
         .then(data => {
             // Save user token or relevant data in localStorage
-            localStorage.setItem('authToken', data.token); // Example
+            localStorage.setItem('authToken', data.token); 
             setSuccessMessage('You have successfully signed in!');
             setError('');
-            navigate('/dashboard'); // Navigate to the dashboard
+            navigate('/OrderHistory');
         })
         .catch((error) => {
             console.error('Error:', error);
