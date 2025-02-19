@@ -41,8 +41,7 @@ const App = () => {
         <Route path="/sizeguide"element={<SizeGuide/>} />
         <Route path="/newcollection" element={<NewCollection/>} />
         <Route path="/create-account" element={<CreateAccount />} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/order-history" component={OrderHistory} />
+        <Route path="/OrderHistory" element={<OrderHistory />} />
       </Routes>
       <Footer /> 
     </Router>

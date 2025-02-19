@@ -6,8 +6,8 @@ const OrderHistory = () => {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        const token = localStorage.getItem('authToken'); 
-        const username = localStorage.getItem('username'); 
+        const token = localStorage.getItem('authToken');
+        const username = localStorage.getItem('username');
 
         if (!token || !username) {
             setError('User not authenticated. Please sign in.');
@@ -19,24 +19,24 @@ const OrderHistory = () => {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}` 
+                'Authorization': `Bearer ${token}`
             }
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to fetch order history');
-            }
-            return response.json();
-        })
-        .then(data => {
-            setOrders(data.orders || []);
-            setLoading(false);
-        })
-        .catch(err => {
-            console.error('Error fetching order history:', err);
-            setError('Could not load order history.');
-            setLoading(false);
-        });
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch order history');
+                }
+                return response.json();
+            })
+            .then(data => {
+                setOrders(data.orders || []);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error('Error fetching order history:', err);
+                setError('Could not load order history.');
+                setLoading(false);
+            });
     }, []);
 
     return (

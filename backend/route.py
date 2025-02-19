@@ -17,7 +17,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
-SECRET_KEY = os.getenv('SECRET_KEY', 'your_secret_key')
+SECRET_KEY = os.getenv('SECRET_KEY')
+if not SECRET_KEY:
+    raise ValueError("Missing SECRET_KEY! Set it in the .env file.")
+
 
 @app.route('/', methods=['GET'])
 def welcome():
